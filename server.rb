@@ -11,7 +11,7 @@ def parse_request(request_line)
   [http_method, path, params]
 end
 
-server = TCPServer.new("localhost", 3333)
+server = TCPServer.new("", 3333)
 loop do
   client = server.accept
   request_line = client.gets
