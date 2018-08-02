@@ -4,9 +4,13 @@ def parse_request(request_line)
   http_method, url = request_line.split(' ')
   path, query_string = url.split('?')
 
-  params = query_string.split('&')
-                       .map { |param| param.split('=') }
-                       .to_h
+  unless query_string.nil?
+    params = query_string.split('&')
+                         .map { |param| param.split('=') }
+                         .to_h
+  else
+    params = {}
+  end
 
   [http_method, path, params]
 end
